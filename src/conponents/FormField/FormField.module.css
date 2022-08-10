@@ -1,0 +1,22 @@
+.wrap {
+  position: relative;
+  display: flex;
+  margin: 1rem 0;
+}
+
+.label {
+  position: absolute;
+  padding: .3rem .7rem;
+}
+
+.label.active {
+  transform: translate(.5rem,-.8rem);
+  left: 1rem;
+  padding: 0 .7rem;
+  background-color: white;
+}
+
+.input {
+  width: 100%;
+  font-size: 100%;
+}

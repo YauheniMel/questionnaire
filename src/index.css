@@ -1,3 +1,40 @@
-body {
+@import './styles/colors.css';
+
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  color: var(--primary-main);
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+input, textarea {
+  color: var(--primary-main);
+  border-color: var(--primary-main);
+  resize: none;
+  padding: .3rem .7rem;
+}
+
+::placeholder {
+  color: var(--primary-light);
+}
+
+button {
+  padding: .2rem .7rem;
+  cursor: pointer;
+  color: var(--primary-main);
+  border-radius: 0;
+  border: none;
 }

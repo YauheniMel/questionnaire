@@ -8,7 +8,9 @@ class Form extends React.Component {
     return (
       <form>
         <fieldset className={classes.fieldset}>
-          <legend>Создание анкеты</legend>
+          <legend className={classes.legend}>
+            Создание анкеты
+          </legend>
           <FormField
             label="Имя"
             type="text"
@@ -48,7 +50,7 @@ class Form extends React.Component {
             placeholder="Приложение для создания различных коллекций"
             type="textarea"
           />
-          <div>
+          <div className={classes.action}>
             <Button type="reset">Отмена</Button>
             <Button>Сохранить</Button>
           </div>

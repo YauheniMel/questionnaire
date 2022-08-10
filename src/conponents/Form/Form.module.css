@@ -1,0 +1,12 @@
+.fieldset {
+  border: none;
+  width: 60%;
+  min-width: 300px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.action {
+  display: flex;
+  justify-content: end;
+}
