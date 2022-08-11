@@ -14,16 +14,17 @@ class Form extends React.Component {
           <FormField
             label="Имя"
             type="text"
-            placeholder="Иванов"
+            placeholder="Иван"
           />
           <FormField
             label="Фамилия"
             type="text"
-            placeholder="Иван"
+            placeholder="Иванов"
           />
           <FormField
             label="Дата рождения"
             type="date"
+            placeholder="22.02.2011"
           />
           <FormField
             label="Телефон"
