@@ -4,9 +4,45 @@
   min-width: 300px;
   max-width: 600px;
   margin: auto;
+  background-color: green;
+  padding: 0 2rem;
+}
+
+.legend {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  filter: drop-shadow(0px 4px 4px red);
+}
+
+.legend::before {
+  content: '';
+  position: absolute;
+  left: -3rem;
+  width: inherit;
+  z-index: -1;
+  clip-path: polygon(11% 0 ,0 48%, 100% 0);
+  height: 100px;
+  shape-margin: 20px;
+  background-color: red;
 }
 
 .action {
+  position: relative;
   display: flex;
   justify-content: end;
+  filter: drop-shadow(4px 4px 4px red);
+}
+
+.action::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -3rem;
+  width: 100%;
+  z-index: -1;
+  clip-path: polygon(0 48%,100% 0, 88% 48%);
+  height: 200px;
+  shape-margin: 20px;
+  background-color: red;
 }
