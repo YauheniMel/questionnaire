@@ -1,4 +1,7 @@
 :root {
   --primary-main: blue;
   --primary-light: rgb(95, 95, 240);
+  --secondary: #00BCD4;
+  --white: #f1f1f1;
+  --active: gray;
 }
