@@ -1,3 +1,5 @@
+@import '../../styles/colors.css';
+
 .wrap {
   position: relative;
   display: flex;
@@ -6,17 +8,69 @@
 
 .label {
   position: absolute;
+  height: 100%;
+  width: 100%;
   padding: .3rem .7rem;
-}
-
-.label.active {
-  transform: translate(.5rem,-.8rem);
-  left: 1rem;
-  padding: 0 .7rem;
-  background-color: white;
 }
 
 .input {
   width: 100%;
   font-size: 100%;
+}
+
+.input:not(:focus-within)::placeholder {
+  opacity: 0;
+}
+
+.input:focus-within {
+  z-index: 1;
+  outline: 0;
+}
+
+.input:not(:placeholder-shown) {
+  z-index: 1;
+}
+
+.input {
+  border-color: transparent;
+}
+
+span {
+  position: absolute;
+  padding: 0rem .7rem;
+  z-index: -1;
+}
+
+.input:focus-within:placeholder-shown ~ span {
+  transform: translate(1.5rem, -50%);
+  background-color: rgba(255, 255, 255, .3);
+  transition-duration: .3s;
+  z-index: 2;
+}
+
+.input[type="date"] ~ span {
+  transform: translate(1.5rem, -50%);
+  background-color: white;
+  transition-duration: .3s;
+  z-index: 2;
+}
+
+.input:not(:focus-within):not(:placeholder-shown) ~ span {
+  transform: translate(1.5rem, -50%);
+  background-color: rgba(255, 255, 255);
+  transition-duration: .3s;
+  z-index: 2;
+}
+
+.input:focus-within:not(:placeholder-shown) ~ span {
+  transform: translate(1.5rem, -50%);
+  background-color: rgba(255, 255, 255, .3);
+  transition-duration: .3s;
+  z-index: 2;
+}
+
+.input[type="date"]:focus-within ~ span {
+  transform: translate(1.5rem, -50%);
+  background-color: rgba(255, 255, 255, .3);
+  transition-duration: .3s;
 }
