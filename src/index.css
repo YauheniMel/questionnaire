@@ -11,6 +11,7 @@ html,
 body {
   height: 100vh;
   font-family: Poppins, sans-serif;
+  background-color: var(--secondary);
 }
 
 body {
@@ -26,7 +27,12 @@ input, textarea {
   color: var(--primary-main);
   border-color: var(--primary-main);
   resize: none;
+  background-color: var(--white);
   padding: .3rem .7rem;
+}
+
+input {
+  height: 2rem;
 }
 
 ::placeholder {
@@ -34,9 +40,22 @@ input, textarea {
 }
 
 button {
-  padding: .2rem .7rem;
+  padding: .5rem .7rem;
   cursor: pointer;
+  font-size: .8rem;
   color: var(--primary-main);
   border-radius: 0;
   border: none;
+}
+
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  html {
+    font-size: 12px;
+  }
 }

@@ -1,48 +1,25 @@
+@import '../../styles/colors.css';
+
 .fieldset {
   border: none;
   width: 60%;
   min-width: 300px;
   max-width: 600px;
-  margin: auto;
-  background-color: green;
+  margin: 0 auto;
+  background-color: var(--primary-light);
   padding: 0 2rem;
+  box-shadow: 0px 4px 4px var(--primary-main);
 }
 
 .legend {
-  position: relative;
-  z-index: 4;
-  width: 100%;
-  filter: drop-shadow(0px 4px 4px red);
-}
-
-.legend::before {
-  content: '';
-  position: absolute;
-  left: -3rem;
-  width: inherit;
-  z-index: -1;
-  clip-path: polygon(11% 0 ,0 48%, 100% 0);
-  height: 100px;
-  shape-margin: 20px;
-  background-color: red;
+  font-size: 1.4rem;
+  color: var(--white);
+  padding: 1rem 1.5rem;
+  background-color: var(--primary-main);
 }
 
 .action {
-  position: relative;
   display: flex;
   justify-content: end;
-  filter: drop-shadow(4px 4px 4px red);
-}
-
-.action::before {
-  content: '';
-  position: absolute;
-  top: -50px;
-  right: -3rem;
-  width: 100%;
-  z-index: -1;
-  clip-path: polygon(0 48%,100% 0, 88% 48%);
-  height: 200px;
-  shape-margin: 20px;
-  background-color: red;
+  padding-bottom: .7rem
 }

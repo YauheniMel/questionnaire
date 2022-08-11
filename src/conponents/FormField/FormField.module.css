@@ -15,7 +15,7 @@
 
 .input {
   width: 100%;
-  font-size: 100%;
+  font-size: 1.2rem;
 }
 
 .input:not(:focus-within)::placeholder {
@@ -50,14 +50,14 @@ span {
 
 .input[type="date"] ~ span {
   transform: translate(1.5rem, -50%);
-  background-color: white;
+  background-color: var(--white);
   transition-duration: .3s;
   z-index: 2;
 }
 
 .input:not(:focus-within):not(:placeholder-shown) ~ span {
   transform: translate(1.5rem, -50%);
-  background-color: rgba(255, 255, 255);
+  background-color: var(--white);
   transition-duration: .3s;
   z-index: 2;
 }
@@ -67,6 +67,10 @@ span {
   background-color: rgba(255, 255, 255, .3);
   transition-duration: .3s;
   z-index: 2;
+}
+
+.input:not(:focus-within):not(:placeholder-shown) {
+  z-index: 0;
 }
 
 .input[type="date"]:focus-within ~ span {
