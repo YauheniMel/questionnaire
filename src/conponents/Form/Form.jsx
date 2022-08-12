@@ -10,6 +10,7 @@ class Form extends React.Component {
         <fieldset className={classes.fieldset}>
           <legend className={classes.legend}>
             Создание анкеты
+            {/* <div className={classes.clear}></div> */}
           </legend>
           <FormField
             label="Имя"

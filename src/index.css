@@ -25,7 +25,7 @@ body {
 
 input, textarea {
   color: var(--primary-main);
-  border-color: var(--primary-main);
+  border: 1px solid var(--primary-main);
   resize: none;
   background-color: var(--white);
   padding: .3rem .7rem;
