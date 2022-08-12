@@ -16,7 +16,7 @@ form {
 
 .legend {
   position: relative;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   color: var(--white);
   padding: 1rem 1.5rem;
   background-color: var(--primary-main);
@@ -36,5 +36,5 @@ form {
 .action {
   display: flex;
   justify-content: end;
-  padding-bottom: .7rem
+  padding-bottom: .7rem;
 }

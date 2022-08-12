@@ -10,7 +10,6 @@ class Form extends React.Component {
         <fieldset className={classes.fieldset}>
           <legend className={classes.legend}>
             Создание анкеты
-            {/* <div className={classes.clear}></div> */}
           </legend>
           <FormField
             label="Имя"
@@ -53,7 +52,9 @@ class Form extends React.Component {
             type="textarea"
           />
           <div className={classes.action}>
-            <Button type="reset">Отмена</Button>
+            <Button type="reset">
+              Отмена
+            </Button>
             <Button>Сохранить</Button>
           </div>
         </fieldset>

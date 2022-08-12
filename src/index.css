@@ -40,12 +40,21 @@ input {
 }
 
 button {
-  padding: .5rem .7rem;
+  padding: .6rem .7rem .4rem .9rem;
   cursor: pointer;
-  font-size: .8rem;
+  overflow: hidden;
+  font-size: 1rem;
+  user-select: none;
+  color: var(--white);
+  background-color: var(--primary-main);
+  letter-spacing: .2rem;
+  border: 2px solid var(--primary-main);
+}
+
+button:hover {
   color: var(--primary-main);
-  border-radius: 0;
-  border: none;
+  background-color: var(--white);
+  transition-duration: .3s;
 }
 
 @media only screen and (max-width: 768px) {
