@@ -1,0 +1,43 @@
+@import '../../styles/colors.css';
+
+.alert {
+  position: absolute;
+  border: 2px solid var(--primary-main);
+  /* border-left: 4px solid var(--primary-main); */
+  background-color: var(--white);
+  z-index: 9998;
+  bottom: calc(100% + 1rem);
+  left: 4px;
+  width: 100%;
+  padding: 0 .3rem;
+  filter: drop-shadow(4px 4px var(--primary-light));
+}
+
+.alert::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  bottom: 0;
+  transform: translate(-4px, 100%);
+  width: 2px;
+  height: 2.7rem;
+  background-color: var(--primary-main);
+  border-top: none;
+}
+/* .alert::after {
+  content: '';
+  position: absolute;
+  left: 2px;
+  bottom: -1px;
+  transform: translate(-4px, 100%);
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--primary-main);
+  clip-path: polygon(0 0, 0 52%, 43% 0);
+  border: 2px solid var(--primary-main);
+  border-top: none;
+} */
+
+.alert:hover {
+  z-index: 9999;
+}

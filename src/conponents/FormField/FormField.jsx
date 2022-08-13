@@ -1,4 +1,5 @@
 import React from 'react';
+import Alert from '../Alert/Alert';
 import classes from './FormField.module.css';
 
 class FormField extends React.Component {
@@ -21,6 +22,7 @@ class FormField extends React.Component {
         >
           {this.props.label}
         </label>
+        <Alert content="Lorem laborum"/>
         {
           this.props.type === 'textarea'
             ? (
