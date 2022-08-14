@@ -15,24 +15,6 @@
   font-size: 1rem;
 }
 
-.input {
-  width: 100%;
-  font-size: 1.2rem;
-}
-
-.input:not(:focus-within)::placeholder {
-  opacity: 0;
-}
-
-.input:focus-within {
-  z-index: 1;
-  outline: 0;
-}
-
-.input:not(:placeholder-shown) {
-  z-index: 1;
-}
-
 span {
   position: absolute;
   z-index: -1;
@@ -43,39 +25,12 @@ span {
   background-color: var(--white);
 }
 
-.input:focus-within:placeholder-shown ~ span {
-  transform: translate(1.5rem, -50%);
-  transition-duration: .3s;
-  z-index: 2;
+
+/* validation */
+.hidden {
+  display: none;
 }
 
-.input[type="date"] ~ span {
-  transform: translate(1.5rem, -50%);
-  background-color: var(--white);
-  transition-property: transform;
-  z-index: 2;
-}
-
-.input:not(:focus-within):not(:placeholder-shown) ~ span {
-  transform: translate(1.5rem, -50%);
-  background-color: var(--white);
-  transition-duration: .3s;
-  z-index: 2;
-}
-
-.input:focus-within:not(:placeholder-shown) ~ span {
-  transform: translate(1.5rem, -50%);
-  transition-duration: .3s;
-  background-color: var(--white);
-  z-index: 2;
-}
-
-.input:not(:focus-within):not(:placeholder-shown) {
-  z-index: 0;
-}
-
-.input[type="date"]:focus-within ~ span {
-  transform: translate(1.5rem, -50%);
-  background-color: var(--white);
-  transition-duration: .3s;
+.alert {
+  display: block;
 }

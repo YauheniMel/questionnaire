@@ -1,57 +1,56 @@
 import React from 'react';
+import validateField from '../../services/validateField';
 import Alert from '../Alert/Alert';
+import Input from '../Input/Input';
+import TextArea from '../TextArea/TextArea';
 import classes from './FormField.module.css';
 
 class FormField extends React.Component {
-  constructor(props) {
-    super(props);
-    this.inputRef = React.createRef();
-    this.handleInputFocus = this.handleInputFocus.bind(this);
-  }
+  alertContent = null;
 
-  handleInputFocus() {
-    this.inputRef.current.focus();
+  componentDidUpdate() {
+    this.alertContent = validateField(this.props.name, this.props.value)
   }
 
   render() {
     return (
       <div className={classes.wrap}>
         <label
+          htmlFor={this.props.label}
           className={classes.label}
-          onClick={this.handleInputFocus}
         >
           {this.props.label}
         </label>
-        <Alert content="Lorem laborum"/>
         {
           this.props.type === 'textarea'
             ? (
-              <textarea
-                ref={this.inputRef}
-                className={classes.input}
-                rows="7"
+              <TextArea
+                label={this.props.label}
                 placeholder={this.props.placeholder}
+                name={this.props.name}
+                handleChange={this.props.handleChange}
+                value={this.props.value}
               />
             ) : (
-              <input
-                ref={this.inputRef}
-                className={classes.input}
-                type={this.props.type === 'date' || this.props.type}
-                onFocus={() => {
-                  if(this.props.type === 'date') {
-                    this.inputRef.current.type = 'date'
-                  }
-                }}
-                onBlur={() => {
-                  if(this.props.type === 'date' && !this.inputRef.current.value) {
-                    this.inputRef.current.type = 'text'
-                  }
-                }}
+              <Input
+                autoFocus={this.props.autofocus}
+                label={this.props.label}
+                type={this.props.type}
+                name={this.props.name}
                 placeholder={this.props.placeholder}
+                handleChange={this.props.handleChange}
+                value={this.props.value}
               />
             )
         }
         <span>{this.props.label}</span>
+        <div className={
+          (this.props.isSubmitted && this.alertContent)
+            ? classes.alert
+            : classes.hidden
+        }>
+          <Alert content={this.alertContent}/>
+        </div>
       </div>
     )
   }
