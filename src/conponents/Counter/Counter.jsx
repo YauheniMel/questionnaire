@@ -3,6 +3,7 @@ import classes from './Counter.module.css';
 
 class Counter extends React.Component {
   max = 600;
+
   constructor(props) {
     super(props);
     this.inputRef = React.createRef();

@@ -6,10 +6,33 @@ import TextArea from '../TextArea/TextArea';
 import classes from './FormField.module.css';
 
 class FormField extends React.Component {
-  alertContent = null;
+  constructor(props) {
+    super(props);
+    this.state = {
+      alertContent: null,
+    }
+  }
 
-  componentDidUpdate() {
-    this.alertContent = validateField(this.props.name, this.props.value)
+  componentDidUpdate({ isSubmitted }) {
+    if(isSubmitted !== this.props.isSubmitted) {
+      this.setState({
+        alertContent: validateField(this.props.name, this.props.value)
+      });
+    }
+  }
+
+  handleChangeField = (name, value) => {
+    this.setState({
+      alertContent: validateField(name, value)
+    });
+
+    this.props.handleChange(name, value);
+  }
+
+  handleClearAlertContent = () => {
+    this.setState({
+      alertContent: null
+    });
   }
 
   render() {
@@ -28,7 +51,7 @@ class FormField extends React.Component {
                 label={this.props.label}
                 placeholder={this.props.placeholder}
                 name={this.props.name}
-                handleChange={this.props.handleChange}
+                handleChange={this.handleChangeField}
                 value={this.props.value}
               />
             ) : (
@@ -38,7 +61,7 @@ class FormField extends React.Component {
                 type={this.props.type}
                 name={this.props.name}
                 placeholder={this.props.placeholder}
-                handleChange={this.props.handleChange}
+                handleChange={this.handleChangeField}
                 value={this.props.value}
               />
             )
@@ -49,11 +72,14 @@ class FormField extends React.Component {
           {this.props.label}
         </span>
         <div className={
-          (this.props.isSubmitted && this.alertContent)
+          (this.props.isSubmitted && this.state.alertContent)
             ? classes.alert
             : classes.hidden
         }>
-          <Alert content={this.alertContent}/>
+          <Alert
+            content={this.state.alertContent}
+            handleClick={this.handleClearAlertContent}
+          />
         </div>
       </div>
     )

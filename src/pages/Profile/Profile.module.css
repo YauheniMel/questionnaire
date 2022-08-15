@@ -1,0 +1,22 @@
+@import '../../styles/colors.css';
+
+.profile {
+  position: relative;
+  border: 2px solid var(--primary-main);
+  width: 70%;
+  min-width: 300px;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: var(--white);
+  padding: 2rem;
+  padding-top: 5rem;
+}
+
+.title {
+  position: absolute;
+  top: 0;
+  font-size: 1.8rem;
+  padding: 1rem 1.5rem;
+  background-color: var(--primary-main);
+  color: var(--white);
+}

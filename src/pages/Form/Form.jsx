@@ -1,39 +1,33 @@
 import React from 'react';
-import Button from '../Button/Button';
-import FormField from '../FormField/FormField';
+import Button from '../../conponents/Button/Button';
+import FormField from '../../conponents/FormField/FormField';
+import checkFormIsValid from '../../services/checkFormIsValid';
 import classes from './Form.module.css';
 
 class Form extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isSubmitted: false,
-    }
-  }
-
   handleSubmit = (e) => {
     e.preventDefault();
 
-    this.setState({
+    this.props.setState((state) => ({
       isSubmitted: true,
-    })
+      isValid: checkFormIsValid(state)
+    }))
   }
 
   handleReset = () => {
-    const keys = Object.keys(this.state);
+    const keys = Object.keys(this.props.state);
 
     const initObjects = keys.map(key => ({ [key]: null }));
     const initState = Object.assign(...initObjects);
 
-    this.setState({
+    this.props.setState({
       ...initState,
       isSubmitted: false,
     });
   }
 
   handleChangeFormField = (name, value) => {
-    console.log(value)
-    this.setState({
+    this.props.setState({
       [name]: value
     })
   }
@@ -50,8 +44,8 @@ class Form extends React.Component {
             autofocus
             type="text"
             placeholder="Иван"
-            isSubmitted={this.state.isSubmitted}
-            value={this.state["name"] || null}
+            isSubmitted={this.props.state.isSubmitted}
+            value={this.props.state.name || null}
             handleChange={this.handleChangeFormField}
             name="name"
           />
@@ -59,8 +53,8 @@ class Form extends React.Component {
             label="Фамилия"
             type="text"
             placeholder="Иванов"
-            isSubmitted={this.state.isSubmitted}
-            value={this.state["surname"] || null}
+            isSubmitted={this.props.state.isSubmitted}
+            value={this.props.state.surname || null}
             handleChange={this.handleChangeFormField}
             name="surname"
           />
@@ -68,8 +62,8 @@ class Form extends React.Component {
             label="Дата рождения"
             type="date"
             placeholder="22.02.2011"
-            value={this.state["date"] || null}
-            isSubmitted={this.state.isSubmitted}
+            value={this.props.state.date || null}
+            isSubmitted={this.props.state.isSubmitted}
             handleChange={this.handleChangeFormField}
             name="date"
           />
@@ -78,17 +72,17 @@ class Form extends React.Component {
             type="tel"
             pattern="[0-9]{3}"
             placeholder="7-7777-77-77"
-            value={this.state["phone"] || null}
-            isSubmitted={this.state.isSubmitted}
+            value={this.props.state.phone || null}
+            isSubmitted={this.props.state.isSubmitted}
             handleChange={this.handleChangeFormField}
             name="phone"
           />
           <FormField
             label="Сайт"
             type="url"
-            value={this.state["url"] || null}
+            value={this.props.state.url || null}
             placeholder="https://example.com"
-            isSubmitted={this.state.isSubmitted}
+            isSubmitted={this.props.state.isSubmitted}
             handleChange={this.handleChangeFormField}
             name="url"
           />
@@ -96,9 +90,9 @@ class Form extends React.Component {
             label="О себе"
             pattern="\S+"
             type="textarea"
-            value={this.state["about"] || null}
+            value={this.props.state.about || null}
             placeholder="Я люблю все то, что не нравится остальным..."
-            isSubmitted={this.state.isSubmitted}
+            isSubmitted={this.props.state.isSubmitted}
             handleChange={this.handleChangeFormField}
             name="about"
           />
@@ -106,8 +100,8 @@ class Form extends React.Component {
             label="Стек технологий"
             placeholder="JavaScript, React, NodeJS, CSS3, HTML5"
             type="textarea"
-            value={this.state["stack"] || null}
-            isSubmitted={this.state.isSubmitted}
+            value={this.props.state.stack || null}
+            isSubmitted={this.props.state.isSubmitted}
             handleChange={this.handleChangeFormField}
             name="stack"
           />
@@ -115,8 +109,8 @@ class Form extends React.Component {
             label="Описание последнего проекта"
             placeholder="Приложение для создания различных коллекций"
             type="textarea"
-            value={this.state["project"] || null}
-            isSubmitted={this.state.isSubmitted}
+            value={this.props.state.project || null}
+            isSubmitted={this.props.state.isSubmitted}
             handleChange={this.handleChangeFormField}
             name="project"
           />

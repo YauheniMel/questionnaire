@@ -8,7 +8,15 @@ class Alert extends React.Component {
         className={classes.alert}
         type={this.props.type}
       >
-        {this.props.content}
+        <strong>
+          {this.props.content}
+        </strong>
+        <button
+          className={classes.button}
+          onClick={this.props.handleClick}
+        >
+          &#9587;
+        </button>
       </div>
     )
   }

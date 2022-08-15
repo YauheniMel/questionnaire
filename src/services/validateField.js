@@ -8,11 +8,11 @@ export default function validateField(name, value) {
       if(!value || value.match(emptyFieldRegExp)) return 'Поле пустое. Заполните пожалуйста.';
 
       if(!value.match(regexp) && value.length === 1) {
-        return 'Имя должно содержать более одной буквы. Исправьте пожалуйста.'
+        return 'Поле должно содержать более одной буквы. Исправьте пожалуйста.'
       }
 
       if(!value.match(regexp)) {
-        return 'Имя должно быть заполнено с большой буквы. Исправьте пожалуйста.'
+        return 'Поле должно быть заполнено с большой буквы. Исправьте пожалуйста.'
       }
 
       return null;

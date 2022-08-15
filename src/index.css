@@ -35,6 +35,10 @@ input {
   height: 2rem;
 }
 
+a {
+  color: var(--primary-main);
+}
+
 ::placeholder {
   color: var(--primary-light);
 }
@@ -55,6 +59,20 @@ button:hover {
   color: var(--primary-main);
   background-color: var(--white);
   transition-duration: .3s;
+}
+
+/* scroll styles */
+::-webkit-scrollbar {
+  width: 4px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-main);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-main);
 }
 
 @media only screen and (max-width: 768px) {

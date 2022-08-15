@@ -12,7 +12,6 @@ class TextArea extends React.Component {
     return (
       <>
         <textarea
-          required
           id={this.props.label}
           ref={this.inputRef}
           className={classes.input}
@@ -22,11 +21,6 @@ class TextArea extends React.Component {
           value={this.props.value || ''}
           onChange={(e) => {
             const { value } = e.currentTarget;
-
-            // if(!value.trim()) {
-            //   console.log()
-            //   this.inputRef.current
-            // }
 
             this.props.handleChange(this.props.name, value)
           }}

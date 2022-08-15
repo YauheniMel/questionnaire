@@ -19,10 +19,27 @@ class Input extends React.Component {
     }
   }
 
+  handlePreparePhoneNumber = (value) => {
+    let phone = '';
+
+    for(let i = 0; i < value.length; i++) {
+      phone += value[i];
+
+      if(i === 0 || i === 4 || i === 6 ) {
+        phone += '-';
+      }
+    }
+
+    if(phone.length > 12) {
+      phone = phone.slice(0, 12);
+    }
+
+    return phone;
+  }
+
   render() {
     return (
       <input
-        required
         autoFocus={this.props.autofocus}
         id={this.props.label}
         ref={this.inputRef}
@@ -36,7 +53,13 @@ class Input extends React.Component {
         placeholder={this.props.placeholder}
         value={this.props.value || ''}
         onChange={(e) => {
-          const { value } = e.currentTarget;
+          let { value } = e.currentTarget;
+
+          if(this.props.type === 'tel') {
+            value = value.replace(/\D/g, "");
+
+            value = this.handlePreparePhoneNumber(value);
+          }
 
           this.props.handleChange(this.props.name, value)
         }}
