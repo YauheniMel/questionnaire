@@ -25,18 +25,31 @@ body {
 
 input, textarea {
   color: var(--primary-main);
-  border: 1px solid var(--primary-main);
+  border: 1px solid var(--primary-light);
   resize: none;
   background-color: var(--white);
   padding: .3rem .7rem;
 }
 
 input {
-  height: 2rem;
+  border: none;
+  border-bottom: 1px solid var(--primary-light);
+  height: 4rem;
+}
+
+input:focus-within,
+textarea:focus-within {
+  border: 1px solid var(--primary-light);
 }
 
 a {
   color: var(--primary-main);
+  font-style: italic;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 ::placeholder {
@@ -53,6 +66,13 @@ button {
   background-color: var(--primary-main);
   letter-spacing: .2rem;
   border: 2px solid var(--primary-main);
+}
+
+button:focus-visible {
+  color: var(--primary-main);
+  background-color: var(--white);
+  transition-duration: .3s;
+  outline: none;
 }
 
 button:hover {

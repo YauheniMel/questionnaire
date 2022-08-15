@@ -19,6 +19,34 @@ class Input extends React.Component {
     }
   }
 
+  handleChangeInput = (e) => {
+    let { value } = e.currentTarget;
+
+    if(this.props.type === 'tel') {
+      value = value.replace(/\D/g, "");
+
+      value = this.handlePreparePhoneNumber(value);
+    }
+
+    this.props.handleChange(this.props.name, value);
+  }
+
+  handleDelTel = (tel) => {
+    if(tel && tel[tel.length - 1] === '-') {
+      this.props.setState({
+        phone: tel.slice(0, -1)
+      })
+    }
+  }
+
+  handleKeyDown = (e) => {
+    if(this.props.type !== 'tel') return false;
+
+    if(e.key === 'Backspace') {
+      this.handleDelTel(this.props.value);
+    }
+  }
+
   handlePreparePhoneNumber = (value) => {
     let phone = '';
 
@@ -52,17 +80,8 @@ class Input extends React.Component {
         onBlur={this.handleBlurInput}
         placeholder={this.props.placeholder}
         value={this.props.value || ''}
-        onChange={(e) => {
-          let { value } = e.currentTarget;
-
-          if(this.props.type === 'tel') {
-            value = value.replace(/\D/g, "");
-
-            value = this.handlePreparePhoneNumber(value);
-          }
-
-          this.props.handleChange(this.props.name, value)
-        }}
+        onChange={this.handleChangeInput}
+        onKeyDown={this.handleKeyDown}
       />
     )
   }

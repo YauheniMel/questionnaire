@@ -29,12 +29,6 @@ class FormField extends React.Component {
     this.props.handleChange(name, value);
   }
 
-  handleClearAlertContent = () => {
-    this.setState({
-      alertContent: null
-    });
-  }
-
   render() {
     return (
       <div className={classes.wrap}>
@@ -56,11 +50,12 @@ class FormField extends React.Component {
               />
             ) : (
               <Input
-                autoFocus={this.props.autofocus}
+                autofocus={this.props.autofocus}
                 label={this.props.label}
                 type={this.props.type}
                 name={this.props.name}
                 placeholder={this.props.placeholder}
+                setState={(data) => this.props.setState(data)}
                 handleChange={this.handleChangeField}
                 value={this.props.value}
               />
@@ -78,7 +73,6 @@ class FormField extends React.Component {
         }>
           <Alert
             content={this.state.alertContent}
-            handleClick={this.handleClearAlertContent}
           />
         </div>
       </div>

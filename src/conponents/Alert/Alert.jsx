@@ -2,22 +2,53 @@ import React from 'react';
 import classes from './Alert.module.css';
 
 class Alert extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hideAlert: true,
+    }
+  }
+
+  handleShowAlert = (isHide) => {
+    console.log(isHide)
+    this.setState(({
+      hideAlert: isHide
+    }))
+  }
+
   render() {
     return (
-      <div
-        className={classes.alert}
-        type={this.props.type}
-      >
-        <strong>
-          {this.props.content}
-        </strong>
-        <button
-          className={classes.button}
-          onClick={this.props.handleClick}
-        >
-          &#9587;
-        </button>
-      </div>
+      <>
+        {
+          this.state.hideAlert
+            ? (
+              <div
+                className={classes.alert}
+                type={this.props.type}
+              >
+                <strong>
+                  {this.props.content}
+                </strong>
+                <button
+                  type='button'
+                  className={classes.button}
+                  onClick={() => this.handleShowAlert(false)}
+                >
+                  &#9587;
+                </button>
+              </div>
+            )
+            : (
+              <span
+                title='Показать ошибку'
+                className={classes.span}
+                onClick={() => this.handleShowAlert(true)}
+              >
+                ?
+              </span>
+            )
+        }
+      </>
     )
   }
 }

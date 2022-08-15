@@ -76,6 +76,7 @@ class Form extends React.Component {
             isSubmitted={this.props.state.isSubmitted}
             handleChange={this.handleChangeFormField}
             name="phone"
+            setState={(data) => this.props.setState(data)}
           />
           <FormField
             label="Сайт"

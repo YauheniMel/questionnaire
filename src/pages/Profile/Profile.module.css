@@ -20,3 +20,36 @@
   background-color: var(--primary-main);
   color: var(--white);
 }
+
+.info {
+  border-bottom: 1px solid var(--primary-main);
+  margin-bottom: 70px;
+}
+
+.info > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.details > div {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 10px;
+  padding-bottom: 20px;
+}
+
+.details h4 {
+  flex: 1;
+  border-right: 1px solid var(--primary-main);
+  padding-top: 1rem;
+  padding-left: 1rem;
+}
+
+.details p {
+  font-size: 1.2rem;
+  text-align: justify;
+  text-indent: 10%;
+  flex: 3;
+  padding: 1rem .3rem;
+}
