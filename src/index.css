@@ -40,6 +40,8 @@ input {
 input:focus-within,
 textarea:focus-within {
   border: 1px solid var(--primary-light);
+  z-index: 9999;
+  outline: none;
 }
 
 a {

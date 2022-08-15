@@ -10,6 +10,7 @@
   background-color: var(--white);
   padding: 2rem;
   padding-top: 5rem;
+  box-shadow: 4px 4px var(--primary-light);
 }
 
 .title {

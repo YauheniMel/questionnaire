@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   background-color: var(--white);
-  z-index: 9998;
+  z-index: 9997;
   bottom: calc(100% + 1rem);
   left: 4px;
   width: 100%;
@@ -26,10 +26,6 @@
   clip-path: polygon(50% 100%, 0 0, 100% 0);
   background-color: var(--primary-main);
   border-top: none;
-}
-
-.alert:hover {
-  z-index: 9999;
 }
 
 .button {
@@ -56,6 +52,7 @@
   height: 20px;
   width: 20px;
   text-align: center;
+  line-height: 20px;
   cursor: help;
   z-index: 1000;
   transform: translate(20%, -20%);
@@ -63,3 +60,4 @@
   color: var(--white);
   font-weight: bold;
 }
+

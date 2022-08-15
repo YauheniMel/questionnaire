@@ -12,13 +12,15 @@ export default function validateField(name, value) {
       }
 
       if(!value.match(regexp)) {
-        return 'Поле должно быть заполнено с большой буквы. Исправьте пожалуйста.'
+        return 'Поле должно быть заполнено с большой буквы. И не должно содержать отличных от букв символов. Исправьте пожалуйста.'
       }
 
       return null;
     }
     case 'date': {
       if(!value || value.match(emptyFieldRegExp)) return 'Поле пустое. Заполните пожалуйста.';
+
+      if(+new Date(value) > +new Date()) return 'Для начала родитесь, а потом возвращайтесь;)';
 
       return null;
     }

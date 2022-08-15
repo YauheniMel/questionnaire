@@ -39,5 +39,5 @@
 }
 
 .button:focus:not(:active)::after {
-  animation: ripple .2s ease-in-out;
+  animation: ripple .175s ease-in-out;
 }
