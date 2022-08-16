@@ -122,7 +122,7 @@ class Form extends React.Component {
             name="project"
           />
           <div className={classes.action}>
-            {!this.props.state.isValid && (
+            {(!this.props.state.isValid && this.props.state.isSubmitted) && (
               <strong>Форма заполнена неправильно</strong>
             )}
             <Button
