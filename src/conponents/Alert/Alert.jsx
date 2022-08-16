@@ -5,7 +5,7 @@ class Alert extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hideAlert: true,
+      hideAlert: false,
     }
   }
 

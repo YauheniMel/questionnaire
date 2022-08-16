@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   background-color: var(--white);
-  z-index: 9997;
+  z-index: 7;
   bottom: calc(100% + 1rem);
   left: 4px;
   width: 100%;
@@ -50,11 +50,11 @@
   top: 0;
   right: 0;
   height: 20px;
+  z-index: 7;
   width: 20px;
   text-align: center;
   line-height: 20px;
   cursor: help;
-  z-index: 1000;
   transform: translate(20%, -20%);
   background-color: var(--error);
   color: var(--white);

@@ -40,7 +40,13 @@ input {
 input:focus-within,
 textarea:focus-within {
   border: 1px solid var(--primary-light);
-  z-index: 9999;
+  z-index: 6;
+  outline: none;
+}
+
+input:not(:focus-within):not(:placeholder-shown),
+textarea:not(:focus-within):not(:placeholder-shown) {
+  border: 1px solid var(--primary-light);
   outline: none;
 }
 

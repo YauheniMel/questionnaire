@@ -7,24 +7,31 @@
   opacity: 0;
 }
 
+.input:not(:placeholder-shown) ~ span {
+  z-index: 6;
+}
+
+.input:not(:focus-within):not(:placeholder-shown) ~ span {
+  transform: translate(1.3rem, -1.2rem);
+}
+
 .input:focus-within ~ span {
   margin-top: 0;
   transform: translate(1.3rem, -50%);
   transition-duration: .175s;
-  z-index: 9999;
+  z-index: 6;
 }
 
 .input:not(:placeholder-shown) {
-  z-index: 1000;
+  z-index: 4;
 }
 
 .input:focus-within:placeholder-shown ~ span {
   transform: translate(1.3rem, -50%);
   transition-duration: .175s;
-  z-index: 9999;
+  z-index: 6;
 }
 
 .input:focus-within:not(:placeholder-shown) ~ span {
   transform: translate(1.3rem, -50%);
-  z-index: 9999;
 }
