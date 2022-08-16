@@ -67,7 +67,7 @@ class FormField extends React.Component {
           {this.props.label}
         </span>
         <div className={
-          (this.props.isSubmitted && this.state.alertContent)
+          this.state.alertContent
             ? classes.alert
             : classes.hidden
         }>

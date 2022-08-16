@@ -38,3 +38,7 @@ form {
   justify-content: end;
   padding-bottom: .7rem;
 }
+
+.action strong {
+  color: var(--error);
+}

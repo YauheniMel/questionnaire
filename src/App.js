@@ -7,7 +7,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       isSubmitted: false,
-      isValid: false
+      isValid: true
     }
   }
 

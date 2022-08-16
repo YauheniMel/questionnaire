@@ -10,7 +10,6 @@ class Alert extends React.Component {
   }
 
   handleShowAlert = (isHide) => {
-    console.log(isHide)
     this.setState(({
       hideAlert: isHide
     }))

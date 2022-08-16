@@ -52,7 +52,7 @@ class Profile extends React.Component {
             <div>
               <h4>Описание последнего проекта:</h4>
               <p>
-                {this.props.state.stack}
+                {this.props.state.project}
               </p>
             </div>
           </div>
