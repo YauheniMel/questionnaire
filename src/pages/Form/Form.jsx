@@ -7,11 +7,11 @@ import classes from './Form.module.css';
 class Form extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
-
-    this.props.setState((state) => ({
+    this.props.setState((state) =>{
+      return  ({
       isSubmitted: true,
       isValid: checkFormIsValid(state)
-    }))
+    })})
   }
 
   handleReset = () => {
@@ -23,6 +23,7 @@ class Form extends React.Component {
     this.props.setState({
       ...initState,
       isSubmitted: false,
+      isValid: true
     });
   }
 
@@ -30,6 +31,11 @@ class Form extends React.Component {
     this.props.setState({
       [name]: value
     })
+
+    this.props.setState((state) => ({
+      isValid: checkFormIsValid(state),
+      isSubmitted: false
+    }))
   }
 
   render() {
@@ -116,6 +122,9 @@ class Form extends React.Component {
             name="project"
           />
           <div className={classes.action}>
+            {!this.props.state.isValid && (
+              <strong>Форма заполнена неправильно</strong>
+            )}
             <Button
               handleClick={this.handleReset}
               type="reset"

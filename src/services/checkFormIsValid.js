@@ -23,17 +23,23 @@ export default function checkFormIsValid(data) {
     return false;
   }
 
-  if(!about?.match(/^\s{0,}[А-Я][а-я]+\s{0,}$/) && data.length > 600) {
+  if(about?.match(/^\s{0,}$/)) {
     return false;
   }
 
-  if(!stack?.match(/^\s{0,}[А-Я][а-я]+\s{0,}$/) && data.length > 600) {
+  if(stack?.match(/^\s{0,}$/)) {
     return false;
   }
 
-  if(!project?.match(/^\s{0,}[А-Я][а-я]+\s{0,}$/) && data.length > 600) {
+  if(project?.match(/^\s{0,}$/)) {
     return false;
   }
 
-  return true;
+  if(about?.length > 600 || stack?.length > 600 || project?.length > 600) {
+    return false;
+  }
+
+  if(about && stack && project) {
+    return true;
+  }
 }
