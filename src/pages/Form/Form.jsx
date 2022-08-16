@@ -4,143 +4,133 @@ import FormField from '../../conponents/FormField/FormField';
 import checkFormIsValid from '../../services/checkFormIsValid';
 import classes from './Form.module.css';
 
-class Form extends React.Component {
-  handleSubmit = (e) => {
+const Form = ({ setState, state }) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    this.props.setState((state) =>{
-      return  ({
+
+    setState({
+      ...state,
       isSubmitted: true,
       isValid: checkFormIsValid(state)
-    })})
+    })
   }
 
-  handleReset = () => {
-    const keys = Object.keys(this.props.state);
-
-    const initObjects = keys.map(key => ({ [key]: null }));
-    const initState = Object.assign(...initObjects);
-
-    this.props.setState({
-      ...initState,
+  const handleReset = () => {
+    setState({
       isSubmitted: false,
       isValid: true
     });
   }
 
-  handleChangeFormField = (name, value) => {
-    this.props.setState({
+  const handleChangeFormField = (name, value) => {
+    setState({
+      ...state,
+      isValid: checkFormIsValid(state),
+      isSubmitted: false,
       [name]: value
     })
-
-    this.props.setState((state) => ({
-      isValid: checkFormIsValid(state),
-      isSubmitted: false
-    }))
   }
 
-  render() {
-    return (
-      <form noValidate onSubmit={this.handleSubmit}>
-        <fieldset className={classes.fieldset}>
-          <legend className={classes.legend}>
-            Создание анкеты
-          </legend>
-          <FormField
-            label="Имя"
-            autofocus
-            type="text"
-            placeholder="Иван"
-            isSubmitted={this.props.state.isSubmitted}
-            value={this.props.state.name || null}
-            handleChange={this.handleChangeFormField}
-            name="name"
-          />
-          <FormField
-            label="Фамилия"
-            type="text"
-            placeholder="Иванов"
-            isSubmitted={this.props.state.isSubmitted}
-            value={this.props.state.surname || null}
-            handleChange={this.handleChangeFormField}
-            name="surname"
-          />
-          <FormField
-            label="Дата рождения"
-            type="date"
-            placeholder="22.02.2011"
-            value={this.props.state.date || null}
-            isSubmitted={this.props.state.isSubmitted}
-            handleChange={this.handleChangeFormField}
-            name="date"
-          />
-          <FormField
-            label="Телефон"
-            type="tel"
-            pattern="[0-9]{3}"
-            placeholder="7-7777-77-77"
-            value={this.props.state.phone || null}
-            isSubmitted={this.props.state.isSubmitted}
-            handleChange={this.handleChangeFormField}
-            name="phone"
-            setState={(data) => this.props.setState(data)}
-          />
-          <FormField
-            label="Сайт"
-            type="url"
-            value={this.props.state.url || null}
-            placeholder="https://example.com"
-            isSubmitted={this.props.state.isSubmitted}
-            handleChange={this.handleChangeFormField}
-            name="url"
-          />
-          <FormField
-            label="О себе"
-            pattern="\S+"
-            type="textarea"
-            value={this.props.state.about || null}
-            placeholder="Я люблю все то, что не нравится остальным..."
-            isSubmitted={this.props.state.isSubmitted}
-            handleChange={this.handleChangeFormField}
-            name="about"
-          />
-          <FormField
-            label="Стек технологий"
-            placeholder="JavaScript, React, NodeJS, CSS3, HTML5"
-            type="textarea"
-            value={this.props.state.stack || null}
-            isSubmitted={this.props.state.isSubmitted}
-            handleChange={this.handleChangeFormField}
-            name="stack"
-          />
-          <FormField
-            label="Описание последнего проекта"
-            placeholder="Приложение для создания различных коллекций"
-            type="textarea"
-            value={this.props.state.project || null}
-            isSubmitted={this.props.state.isSubmitted}
-            handleChange={this.handleChangeFormField}
-            name="project"
-          />
-          <div className={classes.action}>
-            {(!this.props.state.isValid && this.props.state.isSubmitted) && (
-              <strong>Форма заполнена неправильно</strong>
-            )}
-            <Button
-              handleClick={this.handleReset}
-              type="reset"
-            >
-              Отмена
-            </Button>
-            <Button
-              type="submit"
-            >
-              Сохранить
-            </Button>
-          </div>
-        </fieldset>
-      </form>
-    )
-  }
+  return (
+    <form noValidate onSubmit={handleSubmit}>
+      <fieldset className={classes.fieldset}>
+        <legend className={classes.legend}>
+          Создание анкеты
+        </legend>
+        <FormField
+          label="Имя"
+          autofocus
+          type="text"
+          placeholder="Иван"
+          value={state.name || null}
+          handleChange={handleChangeFormField}
+          name="name"
+          isSubmitted={state.isSubmitted}
+        />
+        <FormField
+          label="Фамилия"
+          type="text"
+          placeholder="Иванов"
+          value={state.surname || null}
+          handleChange={handleChangeFormField}
+          name="surname"
+          isSubmitted={state.isSubmitted}
+        />
+        <FormField
+          label="Дата рождения"
+          type="date"
+          placeholder="22.02.2011"
+          value={state.date || null}
+          handleChange={handleChangeFormField}
+          name="date"
+          isSubmitted={state.isSubmitted}
+        />
+        <FormField
+          label="Телефон"
+          type="tel"
+          pattern="[0-9]{3}"
+          placeholder="7-7777-77-77"
+          value={state.phone || null}
+          handleChange={handleChangeFormField}
+          name="phone"
+          setState={setState}
+          isSubmitted={state.isSubmitted}
+        />
+        <FormField
+          label="Сайт"
+          type="url"
+          value={state.url || null}
+          placeholder="https://example.com"
+          handleChange={handleChangeFormField}
+          name="url"
+          isSubmitted={state.isSubmitted}
+        />
+        <FormField
+          label="О себе"
+          type="textarea"
+          value={state.about || null}
+          placeholder="Я люблю все то, что не нравится остальным..."
+          handleChange={handleChangeFormField}
+          name="about"
+          isSubmitted={state.isSubmitted}
+        />
+        <FormField
+          label="Стек технологий"
+          placeholder="JavaScript, React, NodeJS, CSS3, HTML5"
+          type="textarea"
+          value={state.stack || null}
+          handleChange={handleChangeFormField}
+          name="stack"
+          isSubmitted={state.isSubmitted}
+        />
+        <FormField
+          label="Описание последнего проекта"
+          placeholder="Приложение для создания различных коллекций"
+          type="textarea"
+          value={state.project || null}
+          handleChange={handleChangeFormField}
+          name="project"
+          isSubmitted={state.isSubmitted}
+        />
+        <div className={classes.action}>
+          {(!state.isValid && state.isSubmitted) && (
+            <strong>Форма заполнена неправильно</strong>
+          )}
+          <Button
+            handleClick={handleReset}
+            type="reset"
+          >
+            Отмена
+          </Button>
+          <Button
+            type="submit"
+          >
+            Сохранить
+          </Button>
+        </div>
+      </fieldset>
+    </form>
+  )
 }
 
 export default Form;

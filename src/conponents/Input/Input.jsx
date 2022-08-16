@@ -1,53 +1,59 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import classes from './Input.module.css';
 
-class Input extends React.Component {
-  constructor(props) {
-    super(props);
-    this.inputRef = React.createRef();
-  }
+const Input = ({
+  type,
+  name,
+  handleChange,
+  autofocus,
+  label,
+  placeholder,
+  value,
+  setState
+}) => {
+  const inputRef = useRef();
 
-  handleFocusInput = () => {
-    if(this.props.type === 'date') {
-      this.inputRef.current.type = 'date'
+  const handleFocusInput = () => {
+    if(type === 'date') {
+      inputRef.current.type = 'date'
     }
   }
 
-  handleBlurInput = () => {
-    if(this.props.type === 'date' && !this.inputRef.current.value) {
-      this.inputRef.current.type = 'text'
+  const handleBlurInput = () => {
+    if(type === 'date' && !inputRef.current.value) {
+      inputRef.current.type = 'text'
     }
   }
 
-  handleChangeInput = (e) => {
+  const handleChangeInput = (e) => {
     let { value } = e.currentTarget;
 
-    if(this.props.type === 'tel') {
+    if(type === 'tel') {
       value = value.replace(/\D/g, "");
 
-      value = this.handlePreparePhoneNumber(value);
+      value = handlePreparePhoneNumber(value);
     }
 
-    this.props.handleChange(this.props.name, value);
+    handleChange(name, value);
   }
 
-  handleDelTel = (tel) => {
+  const handleDelTel = (tel) => {
     if(tel && tel[tel.length - 1] === '-') {
-      this.props.setState({
+      setState({
         phone: tel.slice(0, -1)
       })
     }
   }
 
-  handleKeyDown = (e) => {
-    if(this.props.type !== 'tel') return false;
+  const handleKeyDown = (e) => {
+    if(type !== 'tel') return false;
 
     if(e.key === 'Backspace') {
-      this.handleDelTel(this.props.value);
+      handleDelTel(value);
     }
   }
 
-  handlePreparePhoneNumber = (value) => {
+  const handlePreparePhoneNumber = (value) => {
     let phone = '';
 
     for(let i = 0; i < value.length; i++) {
@@ -65,26 +71,24 @@ class Input extends React.Component {
     return phone;
   }
 
-  render() {
-    return (
-      <input
-        autoFocus={this.props.autofocus}
-        id={this.props.label}
-        ref={this.inputRef}
-        className={classes.input}
-        type={(this.props.type === 'date' && this.props.value === null)
-          ? 'text'
-          : this.props.type
-        }
-        onFocus={this.handleFocusInput}
-        onBlur={this.handleBlurInput}
-        placeholder={this.props.placeholder}
-        value={this.props.value || ''}
-        onChange={this.handleChangeInput}
-        onKeyDown={this.handleKeyDown}
-      />
-    )
-  }
+  return (
+    <input
+      autoFocus={autofocus}
+      id={label}
+      ref={inputRef}
+      className={classes.input}
+      type={(type === 'date' && value === null)
+        ? 'text'
+        : type
+      }
+      onFocus={handleFocusInput}
+      onBlur={handleBlurInput}
+      placeholder={placeholder}
+      value={value || ''}
+      onChange={handleChangeInput}
+      onKeyDown={handleKeyDown}
+    />
+  )
 }
 
 export default Input;

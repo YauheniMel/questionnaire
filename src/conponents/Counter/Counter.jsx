@@ -1,37 +1,30 @@
 import React from 'react';
 import classes from './Counter.module.css';
 
-class Counter extends React.Component {
-  max = 600;
+const Counter = ({ letterCount }) => {
+  const max = 600;
 
-  constructor(props) {
-    super(props);
-    this.inputRef = React.createRef();
-  }
-
-  render() {
-    if(this.props.letterCount > this.max) {
-      return (
-        <div className={classes.wrap}>
-          <strong>
-            Превышен лимит символов в поле
-          </strong>
-        </div>
-      )
-    }
-
+  if(letterCount > max) {
     return (
       <div className={classes.wrap}>
-        <strong className={classes.count}>
-          {this.props.letterCount}
+        <strong>
+          Превышен лимит символов в поле
         </strong>
-        /
-        <span className={classes.span}>
-          {this.max}
-        </span>
       </div>
     )
   }
+
+  return (
+    <div className={classes.wrap}>
+      <strong className={classes.count}>
+        {letterCount}
+      </strong>
+      /
+      <span className={classes.span}>
+        {max}
+      </span>
+    </div>
+  )
 }
 
 export default Counter;

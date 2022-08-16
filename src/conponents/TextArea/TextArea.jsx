@@ -1,38 +1,39 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Counter from '../Counter/Counter';
 import classes from './TextArea.module.css';
 
-class TextArea extends React.Component {
-  constructor(props) {
-    super(props);
-    this.inputRef = React.createRef();
-  }
+const TextArea = ({
+  label,
+  name,
+  placeholder,
+  value,
+  handleChange
+}) => {
+  const inputRef = useRef();
 
-  render() {
-    return (
-      <>
-        <textarea
-          id={this.props.label}
-          ref={this.inputRef}
-          className={classes.input}
-          name={this.props.name}
-          rows="7"
-          placeholder={this.props.placeholder}
-          value={this.props.value || ''}
-          onChange={(e) => {
-            const { value } = e.currentTarget;
+  return (
+    <>
+      <textarea
+        id={label}
+        ref={inputRef}
+        className={classes.input}
+        name={name}
+        rows="7"
+        placeholder={placeholder}
+        value={value || ''}
+        onChange={(e) => {
+          const { value } = e.currentTarget;
 
-            this.props.handleChange(this.props.name, value)
-          }}
-        />
-        {
-          this.props.value?.length && (
-            <Counter letterCount={this.props.value.length} />
-          )
-        }
-      </>
-    )
-  }
+          handleChange(name, value)
+        }}
+      />
+      {
+        value?.length && (
+          <Counter letterCount={value.length} />
+        )
+      }
+    </>
+  )
 }
 
 export default TextArea;
