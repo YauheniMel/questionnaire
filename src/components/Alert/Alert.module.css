@@ -5,6 +5,7 @@
   border: 2px solid var(--primary-main);
   display: flex;
   justify-content: space-between;
+  column-gap: 10px;
   background-color: var(--white);
   z-index: 7;
   bottom: calc(100% + 1rem);
@@ -37,7 +38,6 @@
   padding: 0;
   letter-spacing: 0;
   font-size: .8rem;
-  align-self: flex-start;
 }
 
 .button:hover {
@@ -49,14 +49,13 @@
   position: absolute;
   top: 0;
   right: 0;
-  height: 20px;
+  padding: .4rem .4rem .4rem .7rem;
   z-index: 7;
-  width: 20px;
   text-align: center;
   line-height: 20px;
   cursor: help;
   transform: translate(20%, -20%);
-  background-color: var(--error);
+  background-color: var(--warning);
   color: var(--white);
   font-weight: bold;
 }

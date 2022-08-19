@@ -11,7 +11,7 @@ const Input = ({
   value,
   setState
 }) => {
-  const inputRef = useRef();
+  const inputRef = useRef(null);
 
   const handleFocusInput = () => {
     if(type === 'date') {

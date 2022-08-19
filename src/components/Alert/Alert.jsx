@@ -31,7 +31,7 @@ const Alert = ({ type, content }) => {
               className={classes.span}
               onClick={() => setAlertIsHidden(true)}
             >
-              ?
+              !
             </span>
           )
       }

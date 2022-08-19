@@ -1,10 +1,14 @@
-import React from 'react';
-import Button from '../../conponents/Button/Button';
-import FormField from '../../conponents/FormField/FormField';
+import React, { useState } from 'react';
+import { initState } from '../../App';
+import Button from '../../components/Button/Button';
+import FormField from '../../components/FormField/FormField';
 import checkFormIsValid from '../../services/checkFormIsValid';
 import classes from './Form.module.css';
 
-const Form = ({ setState, state }) => {
+const Form = ({ setState, state, setIsNotify }) => {
+  const [ formIsReset, setFormIsReset ] = useState(false);
+  const { formData } = state;
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -13,13 +17,15 @@ const Form = ({ setState, state }) => {
       isSubmitted: true,
       isValid: checkFormIsValid(state)
     })
+
+    setFormIsReset(false);
+    setIsNotify(true);
   }
 
   const handleReset = () => {
-    setState({
-      isSubmitted: false,
-      isValid: true
-    });
+    setState(initState);
+
+    setFormIsReset(true);
   }
 
   const handleChangeFormField = (name, value) => {
@@ -27,7 +33,10 @@ const Form = ({ setState, state }) => {
       ...state,
       isValid: checkFormIsValid(state),
       isSubmitted: false,
-      [name]: value
+      formData: {
+        ...state.formData,
+        [name]: value,
+      }
     })
   }
 
@@ -42,79 +51,86 @@ const Form = ({ setState, state }) => {
           autofocus
           type="text"
           placeholder="Иван"
-          value={state.name || null}
+          value={formData.name || null}
           handleChange={handleChangeFormField}
           name="name"
           isSubmitted={state.isSubmitted}
+          formIsReset={formIsReset}
         />
         <FormField
           label="Фамилия"
           type="text"
           placeholder="Иванов"
-          value={state.surname || null}
+          value={formData.surname || null}
           handleChange={handleChangeFormField}
           name="surname"
           isSubmitted={state.isSubmitted}
+          formIsReset={formIsReset}
         />
         <FormField
           label="Дата рождения"
           type="date"
           placeholder="22.02.2011"
-          value={state.date || null}
+          value={formData.date || null}
           handleChange={handleChangeFormField}
           name="date"
           isSubmitted={state.isSubmitted}
+          formIsReset={formIsReset}
         />
         <FormField
           label="Телефон"
           type="tel"
-          pattern="[0-9]{3}"
           placeholder="7-7777-77-77"
-          value={state.phone || null}
+          value={formData.phone || null}
           handleChange={handleChangeFormField}
           name="phone"
           setState={setState}
           isSubmitted={state.isSubmitted}
+          formIsReset={formIsReset}
         />
         <FormField
           label="Сайт"
           type="url"
-          value={state.url || null}
+          value={formData.url || null}
           placeholder="https://example.com"
           handleChange={handleChangeFormField}
           name="url"
           isSubmitted={state.isSubmitted}
+          formIsReset={formIsReset}
         />
         <FormField
           label="О себе"
           type="textarea"
-          value={state.about || null}
+          value={formData.about || null}
           placeholder="Я люблю все то, что не нравится остальным..."
           handleChange={handleChangeFormField}
           name="about"
           isSubmitted={state.isSubmitted}
+          formIsReset={formIsReset}
         />
         <FormField
           label="Стек технологий"
           placeholder="JavaScript, React, NodeJS, CSS3, HTML5"
           type="textarea"
-          value={state.stack || null}
+          value={formData.stack || null}
           handleChange={handleChangeFormField}
           name="stack"
           isSubmitted={state.isSubmitted}
+          formIsReset={formIsReset}
         />
         <FormField
           label="Описание последнего проекта"
           placeholder="Приложение для создания различных коллекций"
           type="textarea"
-          value={state.project || null}
+          value={formData.project || null}
           handleChange={handleChangeFormField}
           name="project"
           isSubmitted={state.isSubmitted}
+          formIsReset={formIsReset}
         />
         <div className={classes.action}>
           {(!state.isValid && state.isSubmitted) && (
-            <strong>Форма заполнена неправильно</strong>
+            <strong>Форма невалидна</strong>
           )}
           <Button
             handleClick={handleReset}

@@ -1,4 +1,5 @@
 @import './styles/colors.css';
+@import './styles/font.css';
 
 * {
   margin: 0;
@@ -9,8 +10,8 @@
 html,
 body {
   height: 100vh;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: var(--secondary);
+  font-family: Pixels, sans-serif;
+  background-color: var(--white);
 }
 
 body {
@@ -20,7 +21,7 @@ body {
 .container {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 1rem 0;
+  padding: 2rem 0;
 }
 
 input, textarea {
@@ -29,6 +30,8 @@ input, textarea {
   resize: none;
   background-color: var(--white);
   padding: .3rem .7rem;
+  outline: none;
+  font-family: Pixels, sans-serif;
 }
 
 input {
@@ -41,13 +44,11 @@ input:focus-within,
 textarea:focus-within {
   border: 1px solid var(--primary-light);
   z-index: 6;
-  outline: none;
 }
 
 input:not(:focus-within):not(:placeholder-shown),
 textarea:not(:focus-within):not(:placeholder-shown) {
   border: 1px solid var(--primary-light);
-  outline: none;
 }
 
 a {
@@ -62,18 +63,20 @@ a:hover {
 
 ::placeholder {
   color: var(--primary-light);
+  font-family: Pixels, sans-serif;
 }
 
 button {
   padding: .6rem .7rem .4rem .9rem;
   cursor: pointer;
   overflow: hidden;
-  font-size: 1rem;
+  font-size: .7rem;
   user-select: none;
   color: var(--white);
   background-color: var(--primary-main);
   letter-spacing: .2rem;
   border: 2px solid var(--primary-main);
+  font-family: Pixels, sans-serif;
 }
 
 button:focus-visible {

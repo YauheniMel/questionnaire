@@ -1,7 +1,7 @@
 :root {
   --primary-main: #1f2a2f;
   --primary-light: #757e81;
-  --secondary: #f1f1f1;
   --white: #f1f1f1;
   --error: #e96767;
+  --warning: #e9be67;
 }

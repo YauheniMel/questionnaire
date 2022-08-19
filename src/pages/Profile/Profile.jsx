@@ -2,33 +2,35 @@ import React from 'react';
 import classes from './Profile.module.css';
 
 const Profile = ({ state }) => {
-  const hrefTel = `tel:${state.phone}`;
+  const { formData } = state;
+
+  const stackList = formData.stack.split(', ').map(stackValue => <li key={stackValue}>{stackValue}</li>)
 
   return (
     <div className={classes.profile}>
       <h2 className={classes.title}>
-        {state.name} {state.surname}
+        {formData.name} {formData.surname}
       </h2>
       <div className={classes.body}>
         <div className={classes.info}>
           <div>
             <h4>Родился(лась):</h4>
-            <time>{state.date}</time>
+            <time>{formData.date}</time>
           </div>
           <div>
             <h4>Телефон:</h4>
-            <a href={hrefTel}>
-              {state.phone}
+            <a href={`tel:${formData.phone}`}>
+              {formData.phone}
             </a>
           </div>
           <div>
             <h4>Сайт:</h4>
             <a
-              href={state.url}
+              href={formData.url}
               target="_blank"
               rel="noreferrer"
             >
-              {state.url}
+              {formData.url}
             </a>
           </div>
         </div>
@@ -36,19 +38,19 @@ const Profile = ({ state }) => {
           <div>
             <h4>О себе:</h4>
             <p>
-              {state.about}
+              {formData.about}
             </p>
           </div>
           <div>
             <h4>Стек технологий:</h4>
-            <p>
-              {state.stack}
-            </p>
+            <ul>
+              {stackList}
+            </ul>
           </div>
           <div>
             <h4>Описание последнего проекта:</h4>
             <p>
-              {state.project}
+              {formData.project}
             </p>
           </div>
         </div>

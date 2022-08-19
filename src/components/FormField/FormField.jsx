@@ -14,6 +14,7 @@ const FormField = ({
   placeholder,
   setState,
   isSubmitted,
+  formIsReset,
   autofocus = false
 }) => {
   const [alertContent, setAlertContent] = useState(null);
@@ -22,7 +23,11 @@ const FormField = ({
     if(isSubmitted) {
       setAlertContent(validateField(name, value));
     }
-  }, [isSubmitted])
+
+    if(formIsReset) {
+      setAlertContent(null);
+    }
+  }, [isSubmitted, formIsReset])
 
   const handleChangeField = (name, value) => {
     const alertContent = validateField(name, value);
